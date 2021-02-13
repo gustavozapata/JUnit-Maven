@@ -18,7 +18,10 @@ import static org.junit.jupiter.api.Assertions.*;
  */
 public class SciCalcDoubleTest {
     
+    Calculator calculator;
+    
     public SciCalcDoubleTest() {
+        calculator = new Calculator();
     }
     
     @BeforeAll
@@ -41,22 +44,21 @@ public class SciCalcDoubleTest {
      * Test of operation method, of class SciCalcDouble.
      */
     @Test
-    public void testOperation() {
-        System.out.println("operation");
-        double value = 0.0;
-        SciCalcDouble instance = new SciCalcDoubleImpl();
-        double expResult = 0.0;
-        double result = instance.operation(value);
-        assertEquals(expResult, result, 0.0);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
-    }
-
-    public class SciCalcDoubleImpl implements SciCalcDouble {
-
-        public double operation(double value) {
-            return 0.0;
-        }
+    public void testRadiansToDegrees() {
+        System.out.println("*** Test Radians to Degrees ***");
+        double expResult = 5156.62;
+        double result = calculator.getDoubleResult(90, calculator.radiansToDegrees);
+      
+        //The last argument is called Delta and it's used when comparing double values
+        //It's the maximum delta between expected and actual for which both numbers are still considered equal.
+        assertEquals(expResult, result, 0.05); 
     }
     
+    @Test
+    public void testDegreesToRadians() {
+        System.out.println("*** Test Degrees to Radians ***");
+        double expResult = 1.57;
+        double result = calculator.getDoubleResult(90, calculator.degreesToRadians);
+        assertEquals(expResult, result, 0.05);
+    }
 }
