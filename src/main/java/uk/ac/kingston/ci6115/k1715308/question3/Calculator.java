@@ -55,24 +55,11 @@ public class Calculator {
         return numbers;
     }
 
-//    public static void main(String[] args) {
-//        List<Double> NumberList = readDataFromFile();
-
-        //a) Basic Calculations
-//        getSciCalcIntResult(3, 7, add);//10
-//        getSciCalcIntResult(6, 3, subtract);//3
-//        getSciCalcIntResult(2, 8, multiply);//16
-//        getSciCalcIntResult(80, 4, divide);//20
-        
-        //b) Scientific Calculations
-//        getSciCalcDoubleResult(80, radiansToDegrees); //4583.6623610
-//        getSciCalcDoubleResult(20, degreesToRadians); //0.34906585
-//        getSciCalcArrayResult(5, radiansSinCosTan); //[-0.95892, 0.28366, -3.380515]
-        
+    //public static void main(String[] args) {        
         //c) Java Streams - Mean and Standard Deviation
-//        getSciCalcListResult(NumberList, meanFromList);
-//        getSciCalcDoubleResult(getSciCalcListResult(NumberList, varianceFromList), standardDeviation);
-//    }
+        //getSciCalcListResult(NumberList, meanFromList);
+        //getSciCalcDoubleResult(getSciCalcListResult(NumberList, varianceFromList), standardDeviation);
+    //}
 
     public int getIntResult(int n1, int n2, SciCalcInt calc) {
         return calc.operation(n1, n2);

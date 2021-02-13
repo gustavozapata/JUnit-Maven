@@ -18,7 +18,10 @@ import static org.junit.jupiter.api.Assertions.*;
  */
 public class SciCalcArrayTest {
     
+    Calculator calculator;
+    
     public SciCalcArrayTest() {
+        calculator = new Calculator();
     }
     
     @BeforeAll
@@ -41,22 +44,16 @@ public class SciCalcArrayTest {
      * Test of operation method, of class SciCalcArray.
      */
     @Test
-    public void testOperation() {
-        System.out.println("operation");
-        double values = 0.0;
-        SciCalcArray instance = new SciCalcArrayImpl();
-        double[] expResult = null;
-        double[] result = instance.operation(values);
-        assertArrayEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+    public void testRadiansSinCosTan() {
+        System.out.println("*** Test Sin, Cos, Tan from Radian ***");
+        double[] expResult = new double[]{-0.95892, 0.28366, -3.38051};
+        double[] result = calculator.getArrayResult(5, calculator.radiansSinCosTan);
+        assertArrayEquals(expResult, result, 0.05);
     }
 
     public class SciCalcArrayImpl implements SciCalcArray {
-
         public double[] operation(double values) {
             return null;
         }
     }
-    
 }

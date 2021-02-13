@@ -19,7 +19,12 @@ import static org.junit.jupiter.api.Assertions.*;
  */
 public class SciCalcListTest {
     
+    Calculator calculator;
+    List<Double> NumberList;
+    
     public SciCalcListTest() {
+        calculator = new Calculator();
+        NumberList = calculator.readDataFromFile();
     }
     
     @BeforeAll
@@ -42,22 +47,18 @@ public class SciCalcListTest {
      * Test of operation method, of class SciCalcList.
      */
     @Test
-    public void testOperation() {
-        System.out.println("operation");
-        List<Double> list = null;
-        SciCalcList instance = new SciCalcListImpl();
-        double expResult = 0.0;
-        double result = instance.operation(list);
-        assertEquals(expResult, result, 0.0);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
-    }
-
-    public class SciCalcListImpl implements SciCalcList {
-
-        public double operation(List<Double> list) {
-            return 0.0;
-        }
+    public void testMean() {
+        System.out.println("*** Test Mean operation ***");
+        double expResult = 106.4;
+        double result = calculator.getResultFromList(NumberList, calculator.mean);
+        assertEquals(expResult, result);
     }
     
+    @Test
+    public void testStandardDeviation() {
+        System.out.println("*** Test Standard Deviation operation ***");
+        double expResult = 169.75582464234;
+        double result = calculator.getResultFromList(NumberList, calculator.standardDeviation);
+        assertEquals(expResult, result, 0.005);
+    }
 }
