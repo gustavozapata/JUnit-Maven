@@ -5,6 +5,8 @@
  */
 package uk.ac.kingston.ci6115.k1715308.question3;
 
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.AfterAll;
@@ -60,5 +62,13 @@ public class SciCalcListTest {
         double expResult = 169.75582464234;
         double result = calculator.getResultFromList(NumberList, calculator.standardDeviation);
         assertEquals(expResult, result, 0.005);
+    }
+    
+    @Test
+    public void testReadDataFromFile(){
+        System.out.println("*** Test Read Data from File ***");
+        List<Double> expResult = new ArrayList<>(Arrays.asList(1.0, 1.0, 2.0, 3.0, 5.0, 8.0, 13.0, 21.0, 34.0, 55.0, 89.0, 144.0, 233.0, 377.0, 610.0));
+        List<Double> result = calculator.readDataFromFile();
+        assertEquals(expResult, result);
     }
 }

@@ -39,11 +39,9 @@ public class Calculator {
         try (BufferedReader br = new BufferedReader(new FileReader("data.csv"))) {
             String line;
             while ((line = br.readLine()) != null) {
-                //regex that cleans up the values (leaves only digits and commas)
                 String[] values = line.replaceAll("[^\\d,]", "").split(",");
                 records.add(Arrays.asList(values));
             }
-            //flatten the list<list<string>> to a single dimensional list
             records.forEach((number) -> {
                 number.forEach((num) -> {
                     numbers.add(Double.parseDouble(num));
@@ -54,12 +52,6 @@ public class Calculator {
         }
         return numbers;
     }
-
-    //public static void main(String[] args) {        
-        //c) Java Streams - Mean and Standard Deviation
-        //getSciCalcListResult(NumberList, meanFromList);
-        //getSciCalcDoubleResult(getSciCalcListResult(NumberList, varianceFromList), standardDeviation);
-    //}
 
     public int getIntResult(int n1, int n2, SciCalcInt calc) {
         return calc.operation(n1, n2);

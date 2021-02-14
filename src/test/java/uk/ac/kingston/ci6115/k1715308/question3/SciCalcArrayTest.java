@@ -50,10 +50,4 @@ public class SciCalcArrayTest {
         double[] result = calculator.getArrayResult(5, calculator.radiansSinCosTan);
         assertArrayEquals(expResult, result, 0.05);
     }
-
-    public class SciCalcArrayImpl implements SciCalcArray {
-        public double[] operation(double values) {
-            return null;
-        }
-    }
 }
