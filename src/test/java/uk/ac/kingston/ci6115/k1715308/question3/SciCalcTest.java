@@ -5,12 +5,17 @@
  */
 package uk.ac.kingston.ci6115.k1715308.question3;
 
+//JUnit 5
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.BeforeAll;
-import org.junit.jupiter.api.Test;
-import static org.junit.jupiter.api.Assertions.*;
+//import org.junit.jupiter.api.Test;
+//import static org.junit.jupiter.api.Assertions.*;
+
+//JUnit 4.11
+import org.junit.Test;
+import static org.junit.Assert.*;
 
 /**
  *
