@@ -20,15 +20,17 @@ import org.junit.runners.Suite;
  * @author k1715308
  */
 //@RunWith(JUnitPlatform.class)
-@RunWith(Suite.class)
+//@RunWith(Suite.class)
 //@SuiteDisplayName("*** Calculator Operations Test ***")
 //@SelectClasses({
-@Suite.SuiteClasses({
-    SciCalcIntTest.class,
-    SciCalcDoubleTest.class,
-    SciCalcArrayTest.class,
-    SciCalcListTest.class
-})
+//@Suite.SuiteClasses({
+//    SciCalcIntTest.class,
+//    SciCalcDoubleTest.class,
+//    SciCalcArrayTest.class,
+//    SciCalcListTest.class
+//})
+//@Tag
+//@Categories
 public class SciCalcTest { 
     // the class remains empty
     // used only as a holder for the above annotations
