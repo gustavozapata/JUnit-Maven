@@ -59,8 +59,8 @@ public class Calculator {
     public double getDoubleResult(double value, SciCalcDouble calc) {
         return calc.operation(value);
     }
-    public double[] getArrayResult(double values, SciCalcArray calc) {
-        return calc.operation(values);
+    public double[] getArrayResult(double value, SciCalcArray calc) {
+        return calc.operation(value);
     }
     public double getResultFromList(List<Double> list, SciCalcList calc){
         return calc.operation(list);

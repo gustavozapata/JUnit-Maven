@@ -12,6 +12,8 @@ import org.junit.platform.runner.JUnitPlatform;
 import org.junit.platform.suite.api.SelectClasses;
 //import org.junit.platform.suite.api.SelectPackages;
 import org.junit.platform.suite.api.SuiteDisplayName;
+//import org.junit.jupiter.api.IncludeTags;
+import org.junit.platform.suite.api.IncludeTags;
 import org.junit.runner.RunWith;
 import org.junit.runners.Suite;
 
@@ -19,18 +21,18 @@ import org.junit.runners.Suite;
  *
  * @author k1715308
  */
-//@RunWith(JUnitPlatform.class)
+//@ExtendWith
+@RunWith(JUnitPlatform.class)
 //@RunWith(Suite.class)
-//@SuiteDisplayName("*** Calculator Operations Test ***")
-//@SelectClasses({
+@SuiteDisplayName("*** Calculator Operations Test ***")
+@SelectClasses({
 //@Suite.SuiteClasses({
-//    SciCalcIntTest.class,
-//    SciCalcDoubleTest.class,
+    SciCalcIntTest.class,
+    SciCalcDoubleTest.class,
 //    SciCalcArrayTest.class,
 //    SciCalcListTest.class
-//})
-//@Tag
-//@Categories
+})
+//@IncludeTags("Doubles")
 public class SciCalcTest { 
     // the class remains empty
     // used only as a holder for the above annotations

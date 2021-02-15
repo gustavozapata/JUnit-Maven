@@ -15,6 +15,7 @@
                     <argLine>
                         -Dfile.encoding=UTF-8
                     </argLine>
+                    <testFailureIgnore>true</testFailureIgnore>
                 </configuration>
             </plugin>
         </plugins>

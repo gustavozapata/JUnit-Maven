@@ -6,12 +6,16 @@
 package uk.ac.kingston.ci6115.k1715308.question3;
 
 //JUnit 5
-import org.junit.jupiter.api.AfterEach;
-import org.junit.jupiter.api.AfterAll;
-import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.BeforeAll;
+import java.util.stream.Stream;
 import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.*;
+import org.junit.jupiter.api.Tag;
+import org.junit.runner.RunWith;
+import org.junit.runners.Parameterized;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.MethodSource;
+import org.junit.jupiter.params.provider.Arguments;
+import static org.junit.jupiter.params.provider.Arguments.arguments;
 
 //JUnit 4.11
 //import org.junit.Test;
@@ -29,41 +33,39 @@ public class SciCalcDoubleTest {
         calculator = new Calculator();
     }
     
-    @BeforeAll
-    public static void setUpClass() {
+    //Parameterized datasets
+    private static Stream<Arguments> dataTestRadiansToDegrees() {
+        return Stream.of(
+                arguments(90, 5156.62),
+                arguments(5, 286.47),
+                arguments(45, 2578.31)
+        );
+    }
+    private static Stream<Arguments> dataTestDegreesToRadians() {
+        return Stream.of(
+                arguments(90, 1.57),
+                arguments(180, 3.14),
+                arguments(360, 6.28)
+        );
     }
     
-    @AfterAll
-    public static void tearDownClass() {
-    }
-    
-    @BeforeEach
-    public void setUp() {
-    }
-    
-    @AfterEach
-    public void tearDown() {
-    }
-
     /**
      * Test of operation method, of class SciCalcDouble.
      */
-    @Test
-    public void testRadiansToDegrees() {
-        System.out.println("*** Test Radians to Degrees ***");
-        double expResult = 5156.62;
-        double result = calculator.getDoubleResult(90, calculator.radiansToDegrees);
+    @ParameterizedTest
+    @MethodSource("dataTestRadiansToDegrees")
+    public void testRadiansToDegrees(double angleRadian, double expResult) {
+        System.out.println("*** Test Parameterized Radians to Degrees ***");
       
         //The last argument is called Delta and it's used when comparing double values
         //It's the maximum delta between expected and actual for which both numbers are still considered equal.
-        assertEquals(expResult, result, 0.05); 
+        assertEquals(expResult, calculator.getDoubleResult(angleRadian, calculator.radiansToDegrees), 0.05);
     }
     
-    @Test
-    public void testDegreesToRadians() {
-        System.out.println("*** Test Degrees to Radians ***");
-        double expResult = 1.57;
-        double result = calculator.getDoubleResult(90, calculator.degreesToRadians);
-        assertEquals(expResult, result, 0.05);
+    @ParameterizedTest
+    @MethodSource("dataTestDegreesToRadians")
+    public void testDegreesToRadians(double angleDegree, double expResult) {
+        System.out.println("*** Test Parameterized Degrees to Radians ***");
+        assertEquals(expResult, calculator.getDoubleResult(angleDegree, calculator.degreesToRadians), 0.05);
     }
 }
