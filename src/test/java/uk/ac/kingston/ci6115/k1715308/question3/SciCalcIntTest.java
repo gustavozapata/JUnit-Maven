@@ -6,16 +6,17 @@
 package uk.ac.kingston.ci6115.k1715308.question3;
 
 //JUnit 5
-import org.junit.jupiter.api.AfterEach;
-import org.junit.jupiter.api.AfterAll;
-import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.BeforeAll;
+import java.util.stream.Stream;
 //import org.junit.jupiter.api.Test;
-//import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.*;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.Arguments;
+import static org.junit.jupiter.params.provider.Arguments.arguments;
+import org.junit.jupiter.params.provider.MethodSource;
 
 //JUnit 4.11
-import org.junit.Test;
-import static org.junit.Assert.*;
+//import org.junit.Test;
+//import static org.junit.Assert.*;
 
 /**
  *
@@ -29,54 +30,64 @@ public class SciCalcIntTest {
         calculator = new Calculator();
     }
     
-    @BeforeAll
-    public static void setUpClass() {
+    //Parameterized datasets
+    private static Stream<Arguments> dataTestAdd() {
+        return Stream.of(
+                arguments(10, 20, 30),
+                arguments(5, 7, 12),
+                arguments(12, 12, 24)
+        );
     }
-    
-    @AfterAll
-    public static void tearDownClass() {
+    private static Stream<Arguments> dataTestSubtract() {
+        return Stream.of(
+                arguments(50, 5, 45),
+                arguments(15, 8, 7),
+                arguments(999, 99, 900)
+        );
     }
-    
-    @BeforeEach
-    public void setUp() {
+    private static Stream<Arguments> dataTestMultiply() {
+        return Stream.of(
+                arguments(3, 3, 9),
+                arguments(5, 5, 25),
+                arguments(2, 64, 128)
+        );
     }
-    
-    @AfterEach
-    public void tearDown() {
+    private static Stream<Arguments> dataTestDivide() {
+        return Stream.of(
+                arguments(81, 9, 9),
+                arguments(16, 4, 4),
+                arguments(1024, 4, 256)
+        );
     }
 
     /**
      * Test of operation method, of class SciCalcInt.
      */
-    @Test
-    public void testAdd() {
-        System.out.println("*** Test Add operation ***");
-        int expResult = 30;
-        int result = calculator.getIntResult(10, 20, calculator.add);
-        assertEquals(expResult, result);
+    @ParameterizedTest
+    @MethodSource("dataTestAdd")
+    public void testAdd(int num1, int num2, int expResult) {
+        System.out.println("*** Test Add Parameterized operation ***");
+        assertEquals(expResult, calculator.getIntResult(num1, num2, calculator.add));
     }
     
-    @Test
-    public void testSubtract() {
-        System.out.println("*** Test Subtract operation ***");
-        int expResult = 7;
-        int result = calculator.getIntResult(13, 6, calculator.subtract);
-        assertEquals(expResult, result);
+    @ParameterizedTest
+    @MethodSource("dataTestSubtract")
+    public void testSubtract(int num1, int num2, int expResult) {
+        System.out.println("*** Test Subtract Parameterized operation ***");
+        assertEquals(expResult, calculator.getIntResult(num1, num2, calculator.subtract));
     }
     
-    @Test
-    public void testMultiply() {
-        System.out.println("*** Test Multiply operation ***");
-        int expResult = 25;
-        int result = calculator.getIntResult(5, 5, calculator.multiply);
-        assertEquals(expResult, result);
+    @ParameterizedTest
+    @MethodSource("dataTestMultiply")
+    public void testMultiply(int num1, int num2, int expResult) {
+        System.out.println("*** Test Multiply Parameterized operation ***");
+        assertEquals(expResult, calculator.getIntResult(num1, num2, calculator.multiply));
     }
     
-    @Test
-    public void testDivide() {
-        System.out.println("*** Test Divide operation ***");
-        int expResult = 24;
-        int result = calculator.getIntResult(48, 2, calculator.divide);
-        assertEquals(expResult, result);
+    @ParameterizedTest
+    @MethodSource("dataTestDivide")
+    public void testDivide(int num1, int num2, int expResult) {
+        System.out.println("*** Test Divide Parameterized operation ***");
+        assertEquals(expResult, calculator.getIntResult(num1, num2, calculator.divide));
     }
 }

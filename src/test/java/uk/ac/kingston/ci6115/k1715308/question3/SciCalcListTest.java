@@ -10,16 +10,17 @@ import java.util.Arrays;
 import java.util.List;
 
 //JUnit 5.3
-//import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.BeforeAll;
-//import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.*;
+//import org.junit.jupiter.execution.timeout.default;
 
 //JUnit 4.11
-import org.junit.Test;
-import static org.junit.Assert.*;
+//import org.junit.Test;
+//import static org.junit.Assert.*;
 //import org.junit.runner.RunWith;
 //import org.junit.runners.Parameterized;
 
@@ -62,7 +63,7 @@ public class SciCalcListTest {
         System.out.println("*** Test Mean operation ***");
         double expResult = 106.4;
         double result = calculator.getResultFromList(NumberList, calculator.mean);
-        assertEquals(expResult, result, 0.0);
+        assertEquals(expResult, result);
     }
     
     @Test
@@ -73,11 +74,12 @@ public class SciCalcListTest {
         assertEquals(expResult, result, 0.005);
     }
     
-    @Test(timeout = DEFAULT_TIMEOUT)
+//    @Test(timeout = DEFAULT_TIMEOUT)
+    @Test
     public void testReadDataFromFile(){
         System.out.println("*** Test Read Data from File ***");
         List<Double> expResult = new ArrayList<>(Arrays.asList(1.0, 1.0, 2.0, 3.0, 5.0, 8.0, 13.0, 21.0, 34.0, 55.0, 89.0, 144.0, 233.0, 377.0, 610.0));
         List<Double> result = calculator.readDataFromFile();
-        assertEquals("Test for reading data from file", expResult, result);
+        assertEquals(expResult, result, "Test for reading data from file");
     }
 }
