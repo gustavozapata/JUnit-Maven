@@ -6,7 +6,9 @@
 package uk.ac.kingston.ci6115.k1715308.question3;
 
 import java.io.BufferedReader;
+import java.io.FileNotFoundException;
 import java.io.FileReader;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -32,11 +34,13 @@ public class Calculator {
     SciCalcList mean = (list) -> list.stream().mapToDouble(num -> num).average().orElse(0.0);
     SciCalcList standardDeviation = (list) -> Math.sqrt(list.stream().map(num -> num - getResultFromList(list, mean)).map(num -> num*num).mapToDouble(num -> num).average().orElse(0.0));
 
+    
     //read the data from the csv file
-    public List<Double> readDataFromFile() {
+    //throws exception is used rather than try/catch so it can be tested with assertThrows()
+    public List<Double> readDataFromFile(String filename) throws FileNotFoundException, IOException {
         List<List<String>> records = new ArrayList<>();
         List<Double> numbers = new ArrayList<>();
-        try (BufferedReader br = new BufferedReader(new FileReader("data.csv"))) {
+        BufferedReader br = new BufferedReader(new FileReader(filename));
             String line;
             while ((line = br.readLine()) != null) {
                 String[] values = line.replaceAll("[^\\d,]", "").split(",");
@@ -47,9 +51,6 @@ public class Calculator {
                     numbers.add(Double.parseDouble(num));
                 });
             });
-        } catch (Exception e) {
-            System.out.println("Error: " + e);
-        }
         return numbers;
     }
 

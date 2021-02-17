@@ -5,7 +5,7 @@
  */
 package uk.ac.kingston.ci6115.k1715308.question3;
 
-//JUnit 5
+//JUnit 5.3
 import java.util.stream.Stream;
 import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.*;
@@ -30,7 +30,7 @@ public class SciCalcArrayTest {
         calculator = new Calculator();
     }
     
-    //Parameterized datasets
+    //Parameterized dataset
     private static Stream<Arguments> dataTestRadiansSinCosTan() {
         return Stream.of(
                 arguments(5, new double[]{-0.95892, 0.28366, -3.38051}),
