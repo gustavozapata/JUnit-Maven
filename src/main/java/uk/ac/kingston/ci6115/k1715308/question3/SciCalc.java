@@ -16,7 +16,7 @@ public interface SciCalc {
  /*
     A marker interface is an interface that has no methods or constants inside it.
     It provides run-time type information about objects, so the compiler and JVM have additional information about the object.
-    Serializable and Cloneable are examples of marker interfaces in the Java 
+    Serializable and Cloneable are examples of marker interfaces in the Java library
     A marker interface is also called a tagging interface.
  */
 }
